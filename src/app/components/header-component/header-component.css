@@ -1,0 +1,148 @@
+/* ==================== HEADER Y NAVEGACIÓN ==================== */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: linear-gradient(145deg, rgba(104, 159, 56, 0.95), rgba(85, 139, 47, 0.95));
+  backdrop-filter: blur(10px);
+  border-bottom: 4px solid #4a5f2f;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav a {
+  color: #f4f1de;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.8rem 1.8rem;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border: 3px solid transparent;
+  background: rgba(139, 195, 74, 0.3);
+  overflow: hidden;
+}
+
+/* Efecto de brillo en los enlaces */
+nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+nav a:hover::before {
+  left: 100%;
+}
+
+/* Hover de los enlaces */
+nav a:hover {
+  background: rgba(139, 195, 74, 0.6);
+  border-color: #7cb342;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 15px rgba(0, 0, 0, 0.4),
+    inset 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+/* Active state */
+nav a:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Clase para el enlace activo (usar con routerLinkActive) */
+nav a.active {
+  background: linear-gradient(145deg, #8bc34a, #7cb342);
+  border-color: #f4f1de;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Ajuste del contenido principal para compensar el header fijo */
+body {
+  padding-top: 80px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  nav {
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+  }
+  
+  nav a {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+  
+  body {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+  
+  nav a {
+    width: 100%;
+    text-align: center;
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+  }
+  
+  body {
+    padding-top: 140px;
+  }
+}
+
+/* ==================== ANIMACIÓN AL CARGAR ==================== */
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+header {
+  animation: slideDown 0.6s ease-out;
+}

@@ -1,0 +1,451 @@
+/* ==================== ESTILOS GLOBALES ==================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial Black', sans-serif;
+  background-image: url('/public/shrek-background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: #2d3e1f;
+  position: relative;
+}
+
+/* Overlay para mejorar legibilidad */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(45, 62, 31, 0.3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==================== CONTENEDOR PRINCIPAL ==================== */
+
+.container,
+app-root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* ==================== PÁGINA HOME ==================== */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 3rem;
+}
+
+.Logo-home {
+  width: 450px;
+  max-width: 85vw;
+  height: auto;
+  filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.6));
+  animation: fadeInFromBackground 2.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInFromBackground {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+    filter: blur(10px) drop-shadow(0 15px 40px rgba(0, 0, 0, 0.6));
+  }
+  60% {
+    filter: blur(2px) drop-shadow(0 15px 40px rgba(0, 0, 0, 0.6));
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0) drop-shadow(0 15px 40px rgba(0, 0, 0, 0.6));
+  }
+}
+
+.home-to-list-btn {
+  background: linear-gradient(145deg, #8bc34a, #689f38);
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 1.2rem 3rem;
+  border: 4px solid #4a5f2f;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.5),
+    inset 0 2px 8px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  letter-spacing: 1.5px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  animation: fadeInButton 1.5s ease-out 1.5s forwards;
+  opacity: 0;
+  text-decoration: none;
+  display: inline-block;
+}
+
+@keyframes fadeInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-to-list-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+}
+
+.home-to-list-btn:hover::before {
+  left: 100%;
+}
+
+.home-to-list-btn:hover {
+  background: linear-gradient(145deg, #9ccc65, #7cb342);
+  border-color: #5d7a3a;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.6),
+    inset 0 3px 10px rgba(255, 255, 255, 0.3);
+}
+
+.home-to-list-btn:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* ==================== TARJETAS Y CONTENEDORES ==================== */
+
+.card,
+.character-card,
+.form-container {
+  background: rgba(139, 195, 74, 0.85);
+  backdrop-filter: blur(10px);
+  border: 4px solid #558b2f;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 2px 5px rgba(255, 255, 255, 0.2);
+  margin: 1rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover,
+.character-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.6),
+    inset 0 3px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* ==================== TÍTULOS ==================== */
+
+h1, h2, h3 {
+  color: #f4f1de;
+  text-shadow: 
+    3px 3px 0 #2d3e1f,
+    4px 4px 10px rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* ==================== FORMULARIOS ==================== */
+
+fieldset {
+  border: none;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  color: #2d3e1f;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="color"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 3px solid #558b2f;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+  color: #2d3e1f;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #7cb342;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 
+    0 0 15px rgba(124, 179, 66, 0.4),
+    inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-error {
+  color: #d32f2f;
+  background: rgba(255, 235, 59, 0.9);
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  border-left: 4px solid #c62828;
+  font-weight: bold;
+  text-shadow: none;
+}
+
+/* ==================== BOTONES ==================== */
+
+button,
+.btn {
+  background: linear-gradient(145deg, #8bc34a, #689f38);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border: 3px solid #4a5f2f;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 2px 5px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  display: inline-block;
+}
+
+button:hover,
+.btn:hover {
+  background: linear-gradient(145deg, #9ccc65, #7cb342);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.5),
+    inset 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+button:active,
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+  background: linear-gradient(145deg, #9e9e9e, #757575);
+  cursor: not-allowed;
+  opacity: 0.6;
+  border-color: #616161;
+}
+
+button:disabled:hover {
+  transform: none;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+/* ==================== TABLAS ==================== */
+
+table {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+thead {
+  background: linear-gradient(145deg, #689f38, #558b2f);
+  color: white;
+}
+
+th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 2px solid #c5e1a5;
+  color: #2d3e1f;
+  font-weight: 500;
+}
+
+tbody tr:hover {
+  background: rgba(139, 195, 74, 0.2);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==================== LISTAS ==================== */
+
+.character-list,
+ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.character-item,
+li {
+  background: rgba(139, 195, 74, 0.9);
+  border: 3px solid #558b2f;
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.character-item:hover,
+li:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ==================== BADGES Y ETIQUETAS ==================== */
+
+.badge,
+.tag {
+  display: inline-block;
+  background: rgba(255, 235, 59, 0.9);
+  color: #2d3e1f;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: 2px solid #f9a825;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin: 0.2rem;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  .Logo-home {
+    width: 320px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .home-to-list-btn {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+  }
+  
+  .card,
+  .character-card,
+  .form-container {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+  
+  .character-list,
+  ul {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .Logo-home {
+    width: 250px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .home-to-list-btn {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* ==================== ANIMACIONES ADICIONALES ==================== */
+
+@keyframes swampGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 195, 74, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(139, 195, 74, 0.6);
+  }
+}
+
+.glow {
+  animation: swampGlow 3s ease-in-out infinite;
+}

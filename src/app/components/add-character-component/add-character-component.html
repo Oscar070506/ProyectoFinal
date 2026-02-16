@@ -1,0 +1,50 @@
+<form [formGroup]="form" (ngSubmit)="enviar()">
+    <fieldset>
+        <label for="formNombre">Nombre</label>
+        <input id="formNombre" type="text" formControlName="nombre">
+        
+        @if(nombre.touched && nombre.hasError('required')) {
+            <p class="form-error">El nombre es obligatorio</p>
+        }
+    </fieldset>
+
+    <fieldset>
+        <label for="formEspecie">Especie</label>
+        <input id="formEspecie" type="text" formControlName="especie">
+        
+        @if(especie.touched && especie.hasError('required')) {
+            <p class="form-error">La especie es obligatoria</p>
+        }
+    </fieldset>
+
+    <fieldset>
+        <label for="formRol">Rol</label>
+        <input id="formRol" type="text" formControlName="rol">
+        
+        @if(rol.touched && rol.hasError('required')) {
+            <p class="form-error">El rol es obligatorio</p>
+        }
+    </fieldset>
+
+    <fieldset>
+        <label for="formPersonalidad">Personalidad</label>
+        <input id="formPersonalidad" type="text" formControlName="personalidad">
+        
+        @if(personalidad.touched && personalidad.hasError('required')) {
+            <p class="form-error">La personalidad es obligatoria</p>
+        }
+    </fieldset>
+
+    <fieldset>
+        <label for="formTiempoEnPantalla">Tiempo en Pantalla (segundos)</label>
+        <input id="formTiempoEnPantalla" type="number" formControlName="tiempo_en_pantalla_s">
+        
+        @if(tiempo_en_pantalla_s.touched && tiempo_en_pantalla_s.hasError('required')) {
+            <p class="form-error">El tiempo en pantalla es obligatorio</p>
+        } @else if(tiempo_en_pantalla_s.touched && tiempo_en_pantalla_s.hasError('min')) {
+            <p class="form-error">El tiempo debe ser mayor a 0</p>
+        }
+    </fieldset>
+
+    <button type="submit" [disabled]="form.invalid">Crear</button>
+</form>

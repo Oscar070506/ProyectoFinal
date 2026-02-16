@@ -1,0 +1,155 @@
+/* Contenedor principal */
+body {
+  background: linear-gradient(135deg, #7cb342 0%, #558b2f 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial Black', 'Arial Bold', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fondo con textura pantanosa */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(76, 175, 80, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 195, 74, 0.3) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Logo con animación de aparición */
+.Logo-home {
+  width: 400px;
+  max-width: 80vw;
+  height: auto;
+  margin-bottom: 3rem;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
+  
+  /* Animación de fade-in desde el fondo */
+  animation: fadeInFromBackground 2.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInFromBackground {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+    filter: blur(10px) drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
+  }
+  60% {
+    filter: blur(2px) drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0) drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
+  }
+}
+
+/* Botón con estética de Shrek */
+.home-to-list-btn {
+  background: linear-gradient(145deg, #8bc34a, #689f38);
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border: 4px solid #558b2f;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    inset 0 2px 5px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  
+  /* Animación de aparición con delay */
+  animation: fadeInButton 1.5s ease-out 1.5s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efecto de brillo en el botón */
+.home-to-list-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+}
+
+.home-to-list-btn:hover::before {
+  left: 100%;
+}
+
+/* Hover del botón */
+.home-to-list-btn:hover {
+  background: linear-gradient(145deg, #9ccc65, #7cb342);
+  border-color: #689f38;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    inset 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Active del botón */
+.home-to-list-btn:active {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .Logo-home {
+    width: 300px;
+    margin-bottom: 2rem;
+  }
+  
+  .home-to-list-btn {
+    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .Logo-home {
+    width: 250px;
+  }
+  
+  .home-to-list-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+  }
+}

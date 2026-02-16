@@ -1,0 +1,22 @@
+<div class="list-page-container">
+  <h1>Listado de Personajes</h1>
+
+  <div class="characters-container">
+    @for (character of characters; track $index) {
+      <div class="character-card" [style.--card-index]="$index">
+        <div class="card-background"></div>
+        
+        <div class="card-content">
+          <h3>{{ character.nombre }}</h3>
+          
+          <p><strong>Especie:</strong> {{ character.especie }}</p>
+          <p><strong>Rol:</strong> {{ character.rol }}</p>
+          <p><strong>Personalidad:</strong> {{ character.personalidad }}</p>
+          <p><strong>Tiempo en pantalla:</strong> {{ character.tiempo_en_pantalla_s }}s</p>
+          
+          <div class="color-box"></div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
