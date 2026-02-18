@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;700;900&display=swap');
+
+/* ==================== PÁGINA DE DETALLE ==================== */
+
+.detail-page-container {
+  min-height: 100vh;
+  padding: 6rem 2rem 3rem;
+  background-image: url('/pantano.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-page-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 35, 15, 0.55);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==================== BOTÓN VOLVER ==================== */
+
+.back-btn {
+  position: relative;
+  z-index: 2;
+  align-self: flex-start;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  background: rgba(61, 40, 23, 0.85);
+  color: #f4f1de;
+  border: 2px solid rgba(244, 241, 222, 0.4);
+  padding: 0.6rem 1.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.back-btn:hover {
+  background: rgba(101, 67, 33, 0.95);
+  border-color: #f4f1de;
+  transform: translateX(4px);   /* ← antes -4px, ahora desliza a la derecha */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+}
+
+/* ==================== TARJETA PERGAMINO ==================== */
+
+.detail-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 750px;
+  aspect-ratio: 4 / 3;
+  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.9));
+  animation: unfoldScroll 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes unfoldScroll {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scaleY(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+/* ==================== IMAGEN PERGAMINO DE FONDO ==================== */
+
+.card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/pergaminoForm.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* ==================== CONTENIDO SOBRE EL PERGAMINO ==================== */
+
+.card-content {
+  position: absolute;
+  z-index: 1;
+  top: 5%;        /* ← antes 8%, ahora más arriba */
+  left: 10%;
+  right: 10%;
+  bottom: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ==================== TÍTULO DEL PERSONAJE ==================== */
+
+.card-content h2 {
+  color: #3d2817;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-family: 'Papyrus', 'Times New Roman', serif;
+  font-weight: bold;
+  text-shadow:
+    1px 1px 0 rgba(0, 0, 0, 0.1),
+    2px 2px 4px rgba(0, 0, 0, 0.15);
+  padding-bottom: 0.8rem;
+  margin: 0 0 0.3rem 0;
+  width: 100%;
+  border-bottom: 2px solid rgba(101, 67, 33, 0.35);
+  line-height: 1.2;
+}
+
+/* ==================== CAMPOS DE INFO ==================== */
+
+.card-content p {
+  color: #3d2817;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  width: 100%;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(101, 67, 33, 0.15);
+  gap: 1rem;
+}
+
+.card-content p:last-of-type {
+  border-bottom: none;
+}
+
+.card-content p strong {
+  color: #2d1810;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  font-family: 'Georgia', serif;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ==================== SELLO DE CERA ==================== */
+
+.color-box {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  margin-top: 1rem;
+  flex-shrink: 0;
+  border: 5px solid rgba(100, 50, 30, 0.4);
+  box-shadow:
+    inset 0 4px 10px rgba(0, 0, 0, 0.5),
+    0 6px 20px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(139, 0, 0, 0.5);
+  background:
+    radial-gradient(circle at 30% 30%,
+      rgba(220, 20, 20, 0.95) 0%,
+      rgba(180, 10, 10, 0.97) 40%,
+      rgba(139, 0, 0, 1) 100%
+    );
+  position: relative;
+}
+
+.color-box::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%,
+      rgba(255, 100, 100, 0.3) 0%,
+      transparent 50%
+    );
+}
+
+.color-box::after {
+  content: '⚔';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+  color: rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* ==================== CARGANDO ==================== */
+
+.loading-text {
+  position: relative;
+  z-index: 1;
+  color: #f4f1de;
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 2px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  .detail-page-container {
+    padding: 5rem 1rem 2rem;
+  }
+
+ .back-btn {
+  position: relative;
+  z-index: 2;
+  align-self: flex-end;   /* ← antes flex-start (izquierda), ahora derecha */
+  margin-right: 2rem;     /* ← antes margin-left */
+  margin-bottom: 2rem;
+  background: rgba(61, 40, 23, 0.85);
+  color: #f4f1de;
+  border: 2px solid rgba(244, 241, 222, 0.4);
+  padding: 0.6rem 1.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+  .detail-card {
+    max-width: 100%;
+  }
+
+  .card-content h2 {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+  }
+
+  .card-content p {
+    font-size: 0.9rem;
+  }
+
+  .color-box {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-content h2 {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+
+  .card-content p {
+    font-size: 0.85rem;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .color-box {
+    width: 45px;
+    height: 45px;
+  }
+}

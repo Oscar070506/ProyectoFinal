@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;700;900&display=swap');
+
 /* ==================== PÁGINA DE LISTADO ==================== */
 
 .list-page-container {
@@ -36,8 +38,9 @@ h1 {
   text-shadow: 
     4px 4px 0 #2d3e1f,
     5px 5px 15px rgba(0, 0, 0, 0.8);
-  letter-spacing: 3px;
-  font-family: 'Papyrus', 'Brush Script MT', cursive;
+  letter-spacing: 4px;
+  font-family: 'Cinzel Decorative', 'Cinzel', serif; /* ← fuente medieval elegante */
+  font-weight: 900;
 }
 
 /* ==================== CONTENEDOR DE PERSONAJES ==================== */
@@ -101,23 +104,26 @@ h1 {
 .card-content {
   position: relative;
   z-index: 1;
-  padding: 20% 15% 18% 15%;
+  padding: 23% 20% 20% 20%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* ==================== TÍTULO DEL PERSONAJE ==================== */
 
 .card-content h3 {
   color: #3d2817;
-  font-size: 2.2rem;
-  margin-bottom: 1.8rem;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
   text-transform: uppercase;
   text-align: center;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-family: 'Papyrus', 'Brush Script MT', 'Times New Roman', serif;
   font-weight: bold;
   text-shadow: 
@@ -125,38 +131,51 @@ h1 {
     3px 3px 5px rgba(0, 0, 0, 0.2);
   padding-bottom: 0.8rem;
   line-height: 1.2;
+  width: 100%;
+  border-bottom: 2px solid rgba(101, 67, 33, 0.3);
 }
 
 /* ==================== INFORMACIÓN DEL PERSONAJE ==================== */
 
 .card-content p {
   color: #3d2817;
-  font-size: 1.15rem;
-  line-height: 1.6;
-  margin: 0.5rem 0;
-  padding-left: 0.3rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  width: 100%;
   font-family: 'Georgia', 'Times New Roman', serif;
   text-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(101, 67, 33, 0.15);
+  gap: 1rem;
+}
+
+.card-content p:last-of-type {
+  border-bottom: none;
 }
 
 .card-content p strong {
   color: #2d1810;
   font-weight: 900;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  display: inline-block;
-  min-width: 180px;
+  font-size: 0.88rem;
+  letter-spacing: 0.8px;
   font-family: 'Georgia', serif;
   text-transform: uppercase;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 /* ==================== SELLO DE CERA ==================== */
 
 .color-box {
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
-  margin: 1.5rem auto 0;
+  margin-top: 1rem;
+  flex-shrink: 0;
   border: 5px solid rgba(100, 50, 30, 0.4);
   box-shadow: 
     inset 0 4px 10px rgba(0, 0, 0, 0.5),
@@ -171,7 +190,6 @@ h1 {
   position: relative;
 }
 
-/* Relieve del sello */
 .color-box::before {
   content: '';
   position: absolute;
@@ -187,14 +205,13 @@ h1 {
     );
 }
 
-/* Símbolo en el sello */
 .color-box::after {
   content: '⚔';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: rgba(0, 0, 0, 0.4);
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
 }
@@ -236,44 +253,43 @@ h1 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
   }
-  
+
   .characters-container {
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
     padding: 1rem;
   }
 
   .character-card {
-    min-height: 450px;
+    min-height: 440px;
   }
-  
+
   .card-content {
-    padding: 18% 12% 15% 12%;
-    gap: 0.7rem;
+    padding: 21% 18% 18% 18%;
+    gap: 0.5rem;
   }
-  
+
   .card-content h3 {
-    font-size: 1.9rem;
-    margin-bottom: 1.5rem;
-    letter-spacing: 2px;
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: 1.5px;
   }
-  
+
   .card-content p {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
   }
 
   .card-content p strong {
-    font-size: 0.95rem;
-    min-width: 160px;
+    font-size: 0.82rem;
   }
 
   .color-box {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
   }
 
   .color-box::after {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -282,7 +298,7 @@ h1 {
     font-size: 2rem;
     letter-spacing: 1px;
   }
-  
+
   .characters-container {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -291,38 +307,36 @@ h1 {
   .character-card {
     min-height: 420px;
   }
-  
+
   .card-content {
-    padding: 18% 10% 12% 10%;
-    gap: 0.6rem;
+    padding: 20% 16% 17% 16%;
+    gap: 0.4rem;
   }
-  
+
   .card-content h3 {
-    font-size: 1.7rem;
-    letter-spacing: 1.5px;
-    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.7rem;
   }
-  
+
   .card-content p {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  
-  .card-content p strong {
-    display: block;
-    margin-bottom: 0.2rem;
-    min-width: auto;
     font-size: 0.9rem;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .card-content p strong {
+    font-size: 0.8rem;
   }
 
   .color-box {
-    width: 55px;
-    height: 55px;
-    margin-top: 1rem;
+    width: 50px;
+    height: 50px;
+    margin-top: 0.8rem;
   }
 
   .color-box::after {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 }
 

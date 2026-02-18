@@ -1,0 +1,21 @@
+<div class="detail-page-container">
+
+  @if (character) {
+    <div class="detail-card">
+      <div class="card-background"></div>
+      <div class="card-content">
+        <h2>{{ character.nombre }}</h2>
+        <p><strong>Especie:</strong> {{ character.especie }}</p>
+        <p><strong>Rol:</strong> {{ character.rol }}</p>
+        <p><strong>Personalidad:</strong> {{ character.personalidad }}</p>
+        <p><strong>Tiempo en pantalla:</strong> {{ character.tiempo_en_pantalla_s }}s</p>
+        <div class="color-box"></div>
+      </div>
+    </div>
+  } @else {
+    <p class="loading-text">Cargando personaje...</p>
+  }
+
+  <button class="back-btn" (click)="goBack()">Volver →</button>
+
+</div>

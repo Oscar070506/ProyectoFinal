@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api-servcice';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-character-component',
@@ -18,7 +19,7 @@ export class AddCharacterComponent {
   personalidad: FormControl;
   tiempo_en_pantalla_s: FormControl;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private router: Router) {
 
     // Se crea un formulario con distintas validaciones para cada campo
     this.nombre = new FormControl('', [
@@ -53,13 +54,18 @@ export class AddCharacterComponent {
   }
 
   enviar() {
-    console.log('Personaje creado');
+    if (this.form.valid)
+    {
+      const newCharacter = this.form.value;
 
-    if (this.form.valid) {
-      const newPersonaje = this.form.value;
-      
-      console.log(newPersonaje);
-      this.form.reset();
-    }
-  }
+      this.apiService.postCharacter(newCharacter).subscribe({
+        next: (resp: any) => {
+          console.log('Peronaje agregado:', resp);
+          this.form.reset();
+          this.router.navigate(['list-page']);
+        },
+        error: (e) => console.log('Error POST:', e)
+      });
+    }  
+}
 }

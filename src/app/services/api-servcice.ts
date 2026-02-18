@@ -8,17 +8,27 @@ import { Character } from '../Models/character';
 })
 export class ApiService {
 
-  private readonly BASE_URL = 'https://699098e66279728b0152d393.mockapi.io/Shrek_Characters';
+  private readonly API_URL = 'https://699098e66279728b0152d393.mockapi.io/Shrek_Characters';
 
   constructor(private http: HttpClient) {}
 
-  // GET (lista)
   getAllCharacters(): Observable<Character[]> {
-    return this.http.get<Character[]>(this.BASE_URL);
+    return this.http.get<Character[]>(this.API_URL);
   }
 
-  // GET (detalle por id)
-  getCharactersById(id: number | string): Observable<Character> {
-    return this.http.get<Character>(`${this.BASE_URL}/${id}`);
+  getCharacterById(id: number | string): Observable<Character> {
+    return this.http.get<Character>(`${this.API_URL}/${id}`);
+  }
+
+  postCharacter(character: any) {
+    return this.http.post(this.API_URL, character);
+  }
+
+  putCharacter(id: number | string, character: any) {
+    return this.http.put(`${this.API_URL}/${id}`, character);
+  }
+
+  deleteCharacter(id: number | string) {
+    return this.http.delete(`${this.API_URL}/${id}`);
   }
 }
