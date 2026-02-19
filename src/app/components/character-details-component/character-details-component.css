@@ -34,8 +34,8 @@
 .back-btn {
   position: relative;
   z-index: 2;
-  align-self: flex-start;
-  margin-left: 2rem;
+  align-self: flex-end;
+  margin-right: 2rem;
   margin-bottom: 2rem;
   background: rgba(61, 40, 23, 0.85);
   color: #f4f1de;
@@ -53,7 +53,7 @@
 .back-btn:hover {
   background: rgba(101, 67, 33, 0.95);
   border-color: #f4f1de;
-  transform: translateX(4px);   /* ← antes -4px, ahora desliza a la derecha */
+  transform: translateX(4px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
 }
 
@@ -100,7 +100,7 @@
 .card-content {
   position: absolute;
   z-index: 1;
-  top: 5%;        /* ← antes 8%, ahora más arriba */
+  top: 5%;
   left: 10%;
   right: 10%;
   bottom: 8%;
@@ -166,52 +166,42 @@
   white-space: nowrap;
 }
 
-/* ==================== SELLO DE CERA ==================== */
+/* ==================== BOTÓN EDITAR ==================== */
 
-.color-box {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
+.btn-goToEdit {
   margin-top: 1rem;
-  flex-shrink: 0;
-  border: 5px solid rgba(100, 50, 30, 0.4);
-  box-shadow:
-    inset 0 4px 10px rgba(0, 0, 0, 0.5),
-    0 6px 20px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(139, 0, 0, 0.5);
-  background:
-    radial-gradient(circle at 30% 30%,
-      rgba(220, 20, 20, 0.95) 0%,
-      rgba(180, 10, 10, 0.97) 40%,
-      rgba(139, 0, 0, 1) 100%
-    );
-  position: relative;
+  padding: 0.5rem 1.4rem;
+  background: rgba(34, 85, 34, 0.85);
+  color: #f4f1de;
+  border: 2px solid rgba(20, 60, 20, 0.5);
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.color-box::before {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  right: 3px;
-  bottom: 3px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 35% 35%,
-      rgba(255, 100, 100, 0.3) 0%,
-      transparent 50%
-    );
+.btn-goToEdit a {
+  color: #f4f1de;
+  text-decoration: none;
 }
 
-.color-box::after {
-  content: '⚔';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.8rem;
-  color: rgba(0, 0, 0, 0.4);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+.btn-goToEdit:hover {
+  background: rgba(45, 120, 45, 0.95);
+  border-color: rgba(244, 241, 222, 0.6);
+  transform: scale(1.05);
+  box-shadow: 
+    0 6px 18px rgba(0, 0, 0, 0.7),
+    0 0 15px rgba(34, 85, 34, 0.5);
+}
+
+.btn-goToEdit:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* ==================== CARGANDO ==================== */
@@ -233,24 +223,10 @@
     padding: 5rem 1rem 2rem;
   }
 
- .back-btn {
-  position: relative;
-  z-index: 2;
-  align-self: flex-end;   /* ← antes flex-start (izquierda), ahora derecha */
-  margin-right: 2rem;     /* ← antes margin-left */
-  margin-bottom: 2rem;
-  background: rgba(61, 40, 23, 0.85);
-  color: #f4f1de;
-  border: 2px solid rgba(244, 241, 222, 0.4);
-  padding: 0.6rem 1.4rem;
-  font-family: 'Cinzel', serif;
-  font-size: 1rem;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
+  .back-btn {
+    margin-right: 1rem;
+    font-size: 0.9rem;
+  }
 
   .detail-card {
     max-width: 100%;
@@ -265,9 +241,9 @@
     font-size: 0.9rem;
   }
 
-  .color-box {
-    width: 50px;
-    height: 50px;
+  .btn-goToEdit {
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
   }
 }
 
@@ -283,8 +259,8 @@
     gap: 0.1rem;
   }
 
-  .color-box {
-    width: 45px;
-    height: 45px;
+  .btn-goToEdit {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
   }
 }

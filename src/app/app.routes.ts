@@ -6,6 +6,7 @@ import { AddCharacterPage } from './pages/add-character-page/add-character-page'
 import { CharacterDetailsPage } from './pages/character-details-page/character-details-page';
 
 export const routes: Routes = [
+    { path: '', redirectTo: 'home-page', pathMatch: 'full' },
     { path: 'home-page', component: HomePage },          
     { path: 'list-page', component: ListPage },
     { path: 'character-details/:index', component: CharacterDetailsPage },

@@ -1,0 +1,30 @@
+.delete-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1.4rem;
+  background: rgba(139, 0, 0, 0.85);
+  color: #f4f1de;
+  border: 2px solid rgba(100, 0, 0, 0.5);
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.delete-btn:hover {
+  background: rgba(180, 0, 0, 0.95);
+  border-color: rgba(244, 241, 222, 0.6);
+  transform: scale(1.05);
+  box-shadow: 
+    0 6px 18px rgba(0, 0, 0, 0.7),
+    0 0 15px rgba(139, 0, 0, 0.5);
+}
+
+.delete-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}

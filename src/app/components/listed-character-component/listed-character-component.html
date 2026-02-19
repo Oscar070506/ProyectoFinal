@@ -3,18 +3,19 @@
 
   <div class="characters-container">
     @for (character of characters; track $index) {
-      <div class="character-card" [style.--card-index]="$index" (click)="getToDetails($index +1)">
+      <div class="character-card" [style.--card-index]="$index" (click)="getToDetails(character.id)">
         <div class="card-background"></div>
         
         <div class="card-content">
           <h3>{{ character.nombre }}</h3>
-          
-          <!-- <p><strong>Especie:</strong> {{ character.especie }}</p>
-          <p><strong>Rol:</strong> {{ character.rol }}</p>
-          <p><strong>Personalidad:</strong> {{ character.personalidad }}</p>
-          <p><strong>Tiempo en pantalla:</strong> {{ character.tiempo_en_pantalla_s }}s</p> -->
-          
-          <div class="color-box"></div>
+
+          <!-- stopPropagation() evita que el click del botón "suba" al div padre (character-card)
+          y dispare también el goToDetail(), ya que ambos comparten el mismo evento click -->
+          <app-delete-character-component
+            [id]="character.id"
+            (deleted)="onDeleted(character.id)"
+            (click)="$event.stopPropagation()">
+          </app-delete-character-component>
         </div>
       </div>
     }

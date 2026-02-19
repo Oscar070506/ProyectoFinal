@@ -9,7 +9,9 @@
         <p><strong>Rol:</strong> {{ character.rol }}</p>
         <p><strong>Personalidad:</strong> {{ character.personalidad }}</p>
         <p><strong>Tiempo en pantalla:</strong> {{ character.tiempo_en_pantalla_s }}s</p>
-        <div class="color-box"></div>
+        <button class="btn-goToEdit">
+          <a [routerLink]="['/edit-page', character.id]">Editar</a>
+        </button>
       </div>
     </div>
   } @else {

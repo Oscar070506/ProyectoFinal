@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api-servcice';
 import { Character } from '../../Models/character';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-character-details-component',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './character-details-component.html',
   styleUrl: './character-details-component.css',
 })

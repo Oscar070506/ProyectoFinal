@@ -1,1 +1,71 @@
-<p>edit-page works!</p>
+<app-header-component></app-header-component>
+
+<div class="detail-page-container">
+
+  @if (character) {
+    <div class="detail-card">
+      <div class="card-background"></div>
+      <div class="card-content">
+        <h2>Editar Personaje</h2>
+
+        <form [formGroup]="form" (ngSubmit)="enviar()">
+
+          <fieldset>
+            <label for="formNombre">Nombre</label>
+            <input id="formNombre" type="text" formControlName="nombre" />
+            @if (nombre.touched && nombre.hasError('required')) {
+              <p class="form-error">El nombre es obligatorio</p>
+            }
+            @if (nombre.touched && nombre.hasError('minlength')) {
+              <p class="form-error">Mínimo 2 caracteres</p>
+            }
+          </fieldset>
+
+          <fieldset>
+            <label for="formEspecie">Especie</label>
+            <input id="formEspecie" type="text" formControlName="especie" />
+            @if (especie.touched && especie.hasError('required')) {
+              <p class="form-error">La especie es obligatoria</p>
+            }
+          </fieldset>
+
+          <fieldset>
+            <label for="formRol">Rol</label>
+            <input id="formRol" type="text" formControlName="rol" />
+            @if (rol.touched && rol.hasError('required')) {
+              <p class="form-error">El rol es obligatorio</p>
+            }
+          </fieldset>
+
+          <fieldset>
+            <label for="formPersonalidad">Personalidad</label>
+            <input id="formPersonalidad" type="text" formControlName="personalidad" />
+            @if (personalidad.touched && personalidad.hasError('required')) {
+              <p class="form-error">La personalidad es obligatoria</p>
+            }
+          </fieldset>
+
+          <fieldset>
+            <label for="formTiempo">Tiempo en Pantalla (segundos)</label>
+            <input id="formTiempo" type="number" formControlName="tiempo_en_pantalla_s" />
+            @if (tiempo_en_pantalla_s.touched && tiempo_en_pantalla_s.hasError('required')) {
+              <p class="form-error">El tiempo en pantalla es obligatorio</p>
+            } @else if (tiempo_en_pantalla_s.touched && tiempo_en_pantalla_s.hasError('min')) {
+              <p class="form-error">El tiempo debe ser mayor a 0</p>
+            }
+          </fieldset>
+
+          <button type="submit" class="btn-goToEdit" [disabled]="form.invalid">
+            Actualizar
+          </button>
+
+        </form>
+      </div>
+    </div>
+  } @else {
+    <p class="loading-text">Cargando personaje...</p>
+  }
+
+  <button class="back-btn" (click)="goBack()">Volver →</button>
+
+</div>

@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../../services/api-servcice';
-import { Character } from '../../Models/character';
 
 @Component({
   selector: 'app-delete-character-component',
@@ -10,20 +9,16 @@ import { Character } from '../../Models/character';
 })
 export class DeleteCharacterComponent {
 
-  character: Character | null = null;
-  id: number | null = null;
+  @Input() id: number | string | null = null;
+  @Output() deleted = new EventEmitter<void>();
 
-  constructor(
-    private apiService: ApiService,
-    private cdr: ChangeDetectorRef
-  ) {}
+  constructor(private apiService: ApiService) {}
 
-  deleteCharacter (id: number | null) {
-    if (id === null) return;
-    this.apiService.deleteCharacter(id).subscribe({
+  deleteCharacter() {
+    if (this.id === null) return;
+    this.apiService.deleteCharacter(this.id).subscribe({
       next: () => {
-        this.cdr.detectChanges();
-        this.apiService.updateCharacterList();
+        this.deleted.emit(); // ← avisa al padre
       },
       error: (e: any) => console.log('Error DELETE:', e)
     });
