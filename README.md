@@ -1,59 +1,138 @@
-# ProyectoFinal
+# Shrek Characters - CRUD App en Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+Aplicación web desarrollada en Angular que permite gestionar personajes del universo de Shrek mediante un CRUD completo conectado a una API REST con MockAPI.
 
-## Development server
+---
 
-To start a local development server, run:
+## Descripcion
 
-```bash
-ng serve
+La aplicacion permite listar, ver, crear, editar y eliminar personajes del universo de Shrek. Desarrollada con Angular standalone components, reactive forms, HttpClient y una estetica medieval con pergaminos y pantanos.
+
+---
+
+## Caracteristicas
+
+- Listado de personajes con tarjetas de pergamino animadas
+- Vista detalle de cada personaje
+- Crear nuevos personajes con validaciones
+- Editar personajes existentes con formulario reactivo
+- Eliminar personajes al instante sin recargar la pagina
+- Diseno responsive para movil, tablet y escritorio
+
+---
+
+## Tecnologias
+
+| Tecnologia | Uso |
+|---|---|
+| Angular 17+ | Framework principal |
+| TypeScript | Lenguaje de programacion |
+| HttpClient | Peticiones HTTP a la API |
+| Reactive Forms | Formularios con validaciones |
+| Angular Router | Navegacion entre paginas |
+| MockAPI | API REST simulada |
+| CSS3 | Estilos medievales con animaciones |
+
+---
+
+## Estructura del Proyecto
+
+```
+src/
+└── app/
+    ├── components/
+    │   ├── add-character-component/
+    │   ├── character-details-component/
+    │   ├── delete-character-component/
+    │   ├── edit-character-component/
+    │   ├── header-component/
+    │   ├── home/
+    │   └── listed-character-component/
+    ├── Models/
+    │   └── character.ts
+    ├── pages/
+    │   ├── add-character-page/
+    │   ├── character-details-page/
+    │   ├── edit-page/
+    │   ├── home-page/
+    │   └── list-page/
+    ├── services/
+    │   └── api-service.ts
+    ├── app.routes.ts
+    └── app.config.ts
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Rutas
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+| Ruta | Descripcion |
+|---|---|
+| `/` | Pantalla de inicio |
+| `/list-page` | Listado de personajes |
+| `/character-details/:index` | Detalle de un personaje |
+| `/edit-page/:index` | Editar un personaje |
+| `/add-character-page` | Crear un nuevo personaje |
 
-```bash
-ng generate component component-name
+---
+
+## Modelo de datos
+
+```typescript
+export interface Character {
+  id: number | string;
+  nombre: string;
+  especie: string;
+  rol: string;
+  personalidad: string;
+  tiempo_en_pantalla_s: number;
+}
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
+
+## API
+
+La aplicacion consume una API REST simulada con MockAPI.
+
+URL base: `https://699098e66279728b0152d393.mockapi.io/Shrek_Characters`
+
+| Metodo | Endpoint | Descripcion |
+|---|---|---|
+| GET | `/Shrek_Characters` | Obtener todos los personajes |
+| GET | `/Shrek_Characters/:id` | Obtener un personaje por id |
+| POST | `/Shrek_Characters` | Crear un personaje |
+| PUT | `/Shrek_Characters/:id` | Actualizar un personaje |
+| DELETE | `/Shrek_Characters/:id` | Eliminar un personaje |
+
+---
+
+## Instalacion
+
+1. Clona el repositorio
 
 ```bash
-ng generate --help
+git clone https://github.com/tu-usuario/shrek-characters.git
 ```
 
-## Building
-
-To build the project run:
+2. Instala las dependencias
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+3. Arranca el servidor de desarrollo
 
 ```bash
-ng test
+ng serve -o
 ```
 
-## Running end-to-end tests
+La aplicacion estara disponible en `http://localhost:4200`
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+## Validaciones del formulario
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Todos los campos son obligatorios. El nombre requiere un minimo de 2 caracteres. El tiempo en pantalla debe ser mayor a 0. El boton de envio permanece deshabilitado mientras haya errores en el formulario.
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
